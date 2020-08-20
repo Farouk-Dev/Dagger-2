@@ -2,7 +2,8 @@ package com.training.dagger
 
 import dagger.Component
 
-@Component
+/*Connect the coffe module  with  the coffee component*/
+@Component(modules = [CoffeeModule::class])
 interface CoffeeComponent {
     fun getCoffee(): Coffee
     fun inject(mainActivity: MainActivity)
