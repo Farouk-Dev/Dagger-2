@@ -13,8 +13,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        // runtime dependency injection
+        var component = DaggerCoffeeComponent.builder().coffeeModule(CoffeeModule(3)).build()
         // inject coffee object inside MainActivity
-        DaggerCoffeeComponent.create().inject(this)
+        component.inject(this)
         println(coffee.getCoffeeCup())
 
     }
