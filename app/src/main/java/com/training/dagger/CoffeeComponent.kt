@@ -3,7 +3,10 @@ package com.training.dagger
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Named
+import javax.inject.Singleton
 
+
+@Singleton //general scope
 /*Connect the coffe module  with  the coffee component*/
 @Component(modules = [CoffeeModule::class])
 interface CoffeeComponent {
