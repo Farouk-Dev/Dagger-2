@@ -1,8 +1,13 @@
 package com.training.dagger
 
 import javax.inject.Inject
+import javax.inject.Named
 
-class Coffee @Inject constructor(val river: River,val sugar:Int) {
+class Coffee @Inject constructor(
+    val river: River,
+    @Sugar val sugar: Int,
+    @Named("milk") val milk: Int
+) {
     // **************** field injection **************************
     @Inject
     lateinit var farm: Farm
@@ -19,5 +24,6 @@ class Coffee @Inject constructor(val river: River,val sugar:Int) {
     }
     //***********************************************************
 
-    fun getCoffeeCup(): String = farm.getBeans() + "+" + river.getWater()+"+ sugar :"+ sugar
+    fun getCoffeeCup(): String =
+        farm.getBeans() + "+" + river.getWater() + "+ sugar :" + sugar + "+ milk :" + milk
 }

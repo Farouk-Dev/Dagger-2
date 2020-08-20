@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         // runtime dependency injection
-        var component = DaggerCoffeeComponent.builder().coffeeModule(CoffeeModule(3)).build()
+        var component = DaggerCoffeeComponent.builder().sugar(2).milk(8).build()
         // inject coffee object inside MainActivity
         component.inject(this)
         println(coffee.getCoffeeCup())
