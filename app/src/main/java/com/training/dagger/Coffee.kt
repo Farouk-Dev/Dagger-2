@@ -2,7 +2,9 @@ package com.training.dagger
 
 import javax.inject.Inject
 import javax.inject.Named
+import javax.inject.Singleton
 
+@MainActivityScope
 class Coffee @Inject constructor(
     val river: River,
     @Sugar val sugar: Int,
