@@ -2,17 +2,18 @@ package com.training.dagger
 
 import dagger.BindsInstance
 import dagger.Component
+import dagger.Subcomponent
 import javax.inject.Named
 
 
 @MainActivityScope //custom scope
 /*Connect the coffe module  with  the coffee component*/
-@Component(dependencies = [AppComponent::class])
+@Subcomponent
 interface CoffeeComponent {
     fun getCoffee(): Coffee
     fun inject(mainActivity: MainActivity)
 
-    @Component.Builder
+    @Subcomponent.Builder
     interface Builder {
         fun build(): CoffeeComponent
 
@@ -21,8 +22,6 @@ interface CoffeeComponent {
 
         @BindsInstance  // inject the milk dependency
         fun milk(@Named("milk") milk: Int): Builder
-
-        fun appComponent(appComponent: AppComponent?): Builder
 
     }
 }

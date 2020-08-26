@@ -13,14 +13,17 @@ class MainActivity : AppCompatActivity() {
     lateinit var coffee1: Coffee
     //***********************************************************
 
-    private  val appComponent : AppComponent? by lazy { (application as? MainApplication)?.appComponent }
-    private  val component :CoffeeComponent by lazy { DaggerCoffeeComponent.builder().milk(2).sugar(3).appComponent(appComponent).build() }
+    private val appComponent: AppComponent? by lazy { (application as? MainApplication)?.appComponent }
+    private val component: CoffeeComponent? by lazy {
+        appComponent?.getCoffeeComponentBuilder()?.milk(2)?.sugar(3)?.build()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         // inject coffee object inside MainActivity
-       component.inject(this)
+        component?.inject(this)
         println("coffee :$coffee\n" + "coffee1 :$coffee1\n" + "farm for coffee : ${coffee.river}\n" + "farm for coffee1 : ${coffee1.river}")
 
     }
